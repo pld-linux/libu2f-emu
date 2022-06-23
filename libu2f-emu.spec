@@ -25,6 +25,7 @@ BuildRequires:	openssl-devel >= 1.1.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -62,6 +63,9 @@ Dokumentacja API biblioteki u2f-emu.
 
 # allow build without -devel already installed
 ln -sf ../src/u2f-emu{,-types}.h tests
+
+# as of 2020 it uses APIs deprecated in openssl 3
+%{__sed} -i -e '/werror=true/d' meson.build
 
 %build
 %meson build
