@@ -14,6 +14,7 @@ Group:		Libraries
 #Source0Download: https://github.com/MattGorko/libu2f-emu/tags
 Source0:	https://github.com/MattGorko/libu2f-emu/archive/%{gitref}/%{name}-%{snap}.tar.gz
 # Source0-md5:	79aa3b26eaf704d530aa49d8430d306b
+Patch0:		no-apidocs.patch
 URL:		https://github.com/MattGorko/libu2f-emu
 %{?with_apidocs:BuildRequires:	doxygen}
 %{?with_apidocs:BuildRequires:	graphviz}
@@ -60,6 +61,7 @@ Dokumentacja API biblioteki u2f-emu.
 
 %prep
 %setup -q -n %{name}-%{gitref}
+%patch0 -p1
 
 # allow build without -devel already installed
 ln -sf ../src/u2f-emu{,-types}.h tests

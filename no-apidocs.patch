@@ -1,0 +1,20 @@
+--- libu2f-emu-d1c4b9c2e1c42e8931033912c8b609521f2a7756/meson.build.orig	2022-07-11 12:13:48.158700002 +0200
++++ libu2f-emu-d1c4b9c2e1c42e8931033912c8b609521f2a7756/meson.build	2022-07-11 12:20:13.011601573 +0200
+@@ -49,7 +49,7 @@
+ 
+ doxygen = find_program('doxygen', required : false)
+ if not doxygen.found()
+-  error('Skip doc: doxygen not found.')
++  warning('Skip doc: doxygen not found.')
+ else
+   doc_config = configuration_data()
+   doc_config.set('VERSION', meson.project_version())
+@@ -60,7 +60,7 @@
+     doc_config.set('HAVE_DOT', 'YES')
+   else
+     doc_config.set('HAVE_DOT', 'NO')
+-    error('Skip dot in doc: dot not found.')
++    warning('Skip dot in doc: dot not found.')
+   endif
+ 
+   doc_config.set('top_srcdir', meson.source_root())
