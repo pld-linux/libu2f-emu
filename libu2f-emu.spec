@@ -19,7 +19,7 @@ URL:		https://github.com/MattGorko/libu2f-emu
 %{?with_apidocs:BuildRequires:	doxygen}
 %{?with_apidocs:BuildRequires:	graphviz}
 # for tests
-#BuildRequires:	gtest-devel >= 1.10.0
+BuildRequires:	gtest-devel >= 1.10.0
 BuildRequires:	meson >= 0.52.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	openssl-devel >= 1.1.0
@@ -68,6 +68,9 @@ ln -sf ../src/u2f-emu{,-types}.h tests
 
 # as of 2020 it uses APIs deprecated in openssl 3
 %{__sed} -i -e '/werror=true/d' meson.build
+
+# gtest 1.15 requires C++14
+%{__sed} -i -e 's/cpp_std=c++11/cpp_std=c++14/' meson.build
 
 %build
 %meson build
