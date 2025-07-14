@@ -61,7 +61,7 @@ Dokumentacja API biblioteki u2f-emu.
 
 %prep
 %setup -q -n %{name}-%{gitref}
-%patch0 -p1
+%patch -P0 -p1
 
 # allow build without -devel already installed
 ln -sf ../src/u2f-emu{,-types}.h tests
