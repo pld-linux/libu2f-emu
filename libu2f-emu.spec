@@ -23,6 +23,7 @@ BuildRequires:	gtest-devel >= 1.10.0
 BuildRequires:	meson >= 0.52.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	openssl-devel >= 1.1.0
+BuildRequires:	openssl-tools >= 1.1.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.042
