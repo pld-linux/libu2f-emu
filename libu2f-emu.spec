@@ -25,7 +25,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	openssl-devel >= 1.1.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,18 +73,18 @@ ln -sf ../src/u2f-emu{,-types}.h tests
 %{__sed} -i -e 's/cpp_std=c++11/cpp_std=c++14/' meson.build
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 %if %{with apidocs}
-%ninja_build -C build doc
+%meson_build doc
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
